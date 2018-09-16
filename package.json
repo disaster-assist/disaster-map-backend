@@ -1,0 +1,12 @@
+{
+  "name": "disaster-map-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:disaster-assist/disaster-map-backend.git",
+  "author": "Aaron Hill <aa1ronham@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@cloudant/cloudant": "^2.3.0",
+    "underscore": "^1.9.1"
+  }
+}

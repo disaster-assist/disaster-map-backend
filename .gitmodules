@@ -1,0 +1,3 @@
+[submodule "src/disaster-credentials"]
+	path = src/disaster-credentials
+	url = git@github.com:Aaron1011/disaster-credentials.git
