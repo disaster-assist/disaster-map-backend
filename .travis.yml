@@ -1,0 +1,26 @@
+language: node_js
+node_js: '8'
+git:
+  submodules: false
+
+sudo: required
+cache: yarn
+
+before_install:
+- openssl aes-256-cbc -K $encrypted_03ae3847df38_key -iv $encrypted_03ae3847df38_iv
+  -in travis_deploy.enc -out travis_deploy -d
+- eval "$(ssh-agent -s)"
+- chmod 600 ./travis_deploy
+- ssh-add ./travis_deploy
+- echo -e "machine github.com\n  login $CI_USER_TOKEN" > ~/.netrc
+- git submodule update --init --recursive
+- curl -sL https://ibm.biz/idt-installer | bash
+
+script: true
+
+deploy:
+  provider: script
+  script: ./scripts/travis_deploy.sh
+  skip_cleanup: true
+  on:
+    branch: master
