@@ -23,10 +23,6 @@ function main(params) {
         });
     }).then(list => {
         return {
-            headers: {
-                'Content-Type': 'text/xml',
-            },
-            statusCode: 200,
             body: list
         }
     });

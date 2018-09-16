@@ -5,8 +5,18 @@
   "repository": "git@github.com:disaster-assist/disaster-map-backend.git",
   "author": "Aaron Hill <aa1ronham@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "deploy:create": "yarn build && ibmcloud fn action create disaster-map-backend dist/index.min.js --web true",
+    "deploy:update": "yarn build && ibmcloud fn action update disaster-map-backend dist/index.min.js",
+    "deploy:delete": "ibmcloud fn action delete disaster-map-backend",
+    "deploy:invoke": "ibmcloud fn action invoke disaster-map-backend --blocking --result",
+    "deploy:upvoke": "yarn deploy:update && yarn deploy:invoke"
+  },
   "dependencies": {
     "@cloudant/cloudant": "^2.3.0",
-    "underscore": "^1.9.1"
+    "underscore": "^1.9.1",
+    "webpack": "^4.19.0",
+    "webpack-cli": "^3.1.0"
   }
 }
