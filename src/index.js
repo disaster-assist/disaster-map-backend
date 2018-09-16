@@ -18,6 +18,7 @@ function main(params) {
             return {
                 lat: geometry.lat,
                 lng: geometry.lng,
+                date: doc.doc.location_date,
                 count: 1
             }
         });
