@@ -12,7 +12,7 @@ function main(params) {
 
     return conversations.list({include_docs:true}).then(results => {
         return results.rows.filter(doc => {
-            return doc.doc.parsed_location !== undefined
+            return !!doc.doc.parsed_location
         }).map(doc => {
             let geometry = doc.doc.parsed_location.json.results[0].geometry.location;
             return {
